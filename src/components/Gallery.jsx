@@ -10,8 +10,9 @@ function Gallery({ tours, setTours, removeTour }) {
     useEffect(() => {
         setIsLoading(true);
 
-        // I only added this timer to show the loading spinning wheel; else loading was too fast to show it
+        // I only added this timer (1 second) to show the loading spinning wheel; else loading was too fast to show it
         setTimeout(() => {
+            
             // fetch data from URL endpoint
             fetch('https://api.allorigins.win/raw?url=https://course-api.com/react-tours-project')
                 .then(response => {
@@ -26,7 +27,9 @@ function Gallery({ tours, setTours, removeTour }) {
                 .catch((error) => {
                     handleError(error);
                 });
+
             setIsLoading(false);
+
         }, 1000);
     }, []);
 

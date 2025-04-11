@@ -3,6 +3,7 @@ import './App.css'
 import Gallery from './components/Gallery';
 
 function App() {
+  
   const [tours, setTours] = useState([]);      // track tours state for reactive app
 
   // remove tour by specified id from tour list
@@ -18,4 +19,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
