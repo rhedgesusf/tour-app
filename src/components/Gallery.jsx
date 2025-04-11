@@ -47,6 +47,7 @@ function Gallery({ tours, setTours, removeTour }) {
             ))}
         </div>
     )
+    
 }
 
 export default Gallery;
