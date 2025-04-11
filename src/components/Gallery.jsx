@@ -12,7 +12,7 @@ function Gallery({ tours, setTours, removeTour }) {
 
         // I only added this timer (1 second) to show the loading spinning wheel; else loading was too fast to show it
         setTimeout(() => {
-            
+
             // fetch data from URL endpoint
             fetch('https://api.allorigins.win/raw?url=https://course-api.com/react-tours-project')
                 .then(response => {
@@ -45,12 +45,18 @@ function Gallery({ tours, setTours, removeTour }) {
         removeTour(id);
     };
 
+    // if error occurred, show error message
+    if (error) return <div className="error">{error}</div>;
+
     // if still loading data, show loading spinner
     if (isLoading) return <img src={loadingImage} width="200"></img>;
 
+    // show empty tours list message
+    if (tours.length === 0) return <div className="no-tours">No tours to display</div>;
+
     return (
         <div className="gallery">
-            <h1>Your Tour Options</h1>
+            
 
             {tours.map((tour) => (
                 <TourCard key={tour.id} id={tour.id} name={tour.name} info={tour.info} image={tour.image} price={tour.price} onRemoveTour={handleRemoveTour} />
