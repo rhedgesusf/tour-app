@@ -3,11 +3,17 @@ import './App.css'
 import Gallery from './components/Gallery';
 
 function App() {
-  const [tours, setTours] = useState([]);
+  const [tours, setTours] = useState([]);      // track tours state for reactive app
+
+  // remove tour by specified id from tour list
+  const removeTour = (id) => {
+    console.log('Item removed: ' + id);
+    setTours((prevTours) => prevTours.filter((tour) => tour.id !== id));
+  };
 
   return (
     <>
-      <Gallery tours={tours} setTours={setTours} />
+      <Gallery tours={tours} setTours={setTours} removeTour={removeTour}/>
     </>
   )
 }

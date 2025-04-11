@@ -3,8 +3,9 @@ import loadingImage from '../assets/loading.gif';
 import TourCard from './TourCard';
 
 function Gallery({ tours, setTours, removeTour }) {
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+
+    const [isLoading, setIsLoading] = useState(true);   // loading state to show spinner
+    const [error, setError] = useState(null);           // error state to show any type of error
 
     useEffect(() => {
         setIsLoading(true);
@@ -35,7 +36,13 @@ function Gallery({ tours, setTours, removeTour }) {
         setError(err.message);
     };
 
-    // if still loading data, show loading image
+    // function to remove tour when button is clicked; this calls method provided by App.js
+    const handleRemoveTour = (id) => {
+        console.log('handleRemoveTour called: ' + id);
+        removeTour(id);
+    };
+
+    // if still loading data, show loading spinner
     if (isLoading) return <img src={loadingImage} width="200"></img>;
 
     return (
@@ -43,11 +50,10 @@ function Gallery({ tours, setTours, removeTour }) {
             <h1>Your Tour Options</h1>
 
             {tours.map((tour) => (
-                <TourCard key={tour.id} id={tour.id} name={tour.name} info={tour.info} image={tour.image} price={tour.price} />
+                <TourCard key={tour.id} id={tour.id} name={tour.name} info={tour.info} image={tour.image} price={tour.price} onRemoveTour={handleRemoveTour} />
             ))}
         </div>
     )
-    
 }
 
 export default Gallery;

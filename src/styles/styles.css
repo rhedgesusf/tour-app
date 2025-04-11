@@ -1,0 +1,22 @@
+.tour-card {
+    padding: 10px;
+    margin: 10px;
+    background-color: darkgray;
+    border-radius: 5px;
+    display: inline-block;
+    width: 400px;
+}
+
+.gallery {
+    margin-bottom: 20px;
+}
+
+.detail {
+    padding-bottom: 10px;
+    cursor: pointer;
+    color: #FFD700;
+}
+
+.remove-btn {
+    background-color: #707070;
+}
